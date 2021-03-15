@@ -33,8 +33,8 @@ default-features = false
 features = ["png"]
 
 [target.'cfg(target_os = "macos")'.dependencies]
-core-graphics = "0.22"
-core-foundation = "0.9"
+core-graphics = {git = "https://github.com/gkd-rusters/core-foundation-rs.git", branch = "gkd", package = "core-graphics"}
+core-foundation = {git = "https://github.com/gkd-rusters/core-foundation-rs.git", branch = "gkd", package = "core-foundation"}
 
 [features]
 default = [ "env_logger" ]

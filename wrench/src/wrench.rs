@@ -537,7 +537,7 @@ impl Wrench {
     pub fn font_key_from_bytes(&mut self, bytes: Vec<u8>, index: u32) -> FontKey {
         let key = self.api.generate_font_key();
         let mut txn = Transaction::new();
-        txn.add_raw_font(key, bytes, index);
+        txn.add_raw_font(key, std::sync::Arc::new(bytes), index);
         self.api.send_transaction(self.document_id, txn);
         key
     }

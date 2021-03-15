@@ -880,6 +880,30 @@ impl From<ResourceCacheError> for RendererError {
     }
 }
 
+impl std::fmt::Display for RendererError {
+    fn fmt(
+        &self,
+        formatter: &mut std::fmt::Formatter,
+    ) -> Result<(), std::fmt::Error> {
+        let err_str = match &self {
+            RendererError::Resource(resource_cache_err) => resource_cache_err.to_string(),
+            RendererError::Shader(shader_err) => shader_err.to_string(),
+            RendererError::Thread(e) => e.to_string(),
+            RendererError::MaxTextureSize => "Exceeds max texture size.".to_string()
+        };
+
+        formatter.write_str(&err_str)?;
+
+        if let Some(err) = std::error::Error::source(self) {
+            write!(formatter, ": {}", err)?;
+        }
+
+        Ok(())
+    }
+}
+
+impl std::error::Error for RendererError {}
+
 impl Renderer {
     /// Initializes WebRender and creates a `Renderer` and `RenderApiSender`.
     ///

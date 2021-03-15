@@ -977,6 +977,15 @@ pub enum ShaderError {
     Link(String, String),        // name, error message
 }
 
+impl std::fmt::Display for ShaderError {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter) -> Result<(), std::fmt::Error> {
+        write!(formatter, "{:?}", self)?;
+        Ok(())
+    }
+}
+
+impl std::error::Error for ShaderError {}
+
 /// A refcounted depth target, which may be shared by multiple textures across
 /// the device.
 struct SharedDepthTarget {

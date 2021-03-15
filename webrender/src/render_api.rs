@@ -520,9 +520,9 @@ impl Transaction {
     }
 
     /// See `ResourceUpdate::AddFont`.
-    pub fn add_raw_font(&mut self, key: FontKey, bytes: Vec<u8>, index: u32) {
+    pub fn add_raw_font(&mut self, key: FontKey, bytes: Arc<Vec<u8>>, index: u32) {
         self.resource_updates
-            .push(ResourceUpdate::AddFont(AddFont::Raw(key, Arc::new(bytes), index)));
+            .push(ResourceUpdate::AddFont(AddFont::Raw(key, bytes, index)));
     }
 
     /// See `ResourceUpdate::AddFont`.

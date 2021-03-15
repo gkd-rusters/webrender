@@ -114,8 +114,9 @@ impl Window {
         let mut txn = Transaction::new();
 
         let font_key = api.generate_font_key();
-        let font_bytes = load_file("../wrench/reftests/text/FreeSans.ttf");
-        txn.add_raw_font(font_key, font_bytes, 0);
+        let font_path = std::env::current_dir().unwrap().join("wrench/reftests/text/FreeSans.ttf");
+        let font_bytes = load_file(font_path.to_str().unwrap());
+        txn.add_raw_font(font_key, std::sync::Arc::new(font_bytes), 0);
 
         let font_instance_key = api.generate_font_instance_key();
         txn.add_font_instance(font_instance_key, font_key, 32.0, None, None, Vec::new());

@@ -333,7 +333,16 @@ version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3b5ed8e7e76c45974e15e41bfa8d5b0483cd90191639e01d8f5f1e606299d3fb"
 dependencies = [
- "core-foundation-sys 0.8.2",
+ "core-foundation-sys 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "libc",
+]
+
+[[package]]
+name = "core-foundation"
+version = "0.9.1"
+source = "git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd#f8d2fd406d6bdbb45d146cd3f6b1349db28ee9fd"
+dependencies = [
+ "core-foundation-sys 0.8.2 (git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd)",
  "libc",
 ]
 
@@ -356,6 +365,11 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ea221b5284a47e40033bf9b66f35f984ec0ea2931eb03505246cd27a963f981b"
 
 [[package]]
+name = "core-foundation-sys"
+version = "0.8.2"
+source = "git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd#f8d2fd406d6bdbb45d146cd3f6b1349db28ee9fd"
+
+[[package]]
 name = "core-graphics"
 version = "0.17.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -375,7 +389,19 @@ checksum = "f6082396a349fa49674ba1bda4077332a18bf150e8fa75745ece07085e29a113"
 dependencies = [
  "bitflags",
  "core-foundation 0.9.0",
- "core-graphics-types",
+ "core-graphics-types 0.1.0",
+ "foreign-types",
+ "libc",
+]
+
+[[package]]
+name = "core-graphics"
+version = "0.22.2"
+source = "git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd#f8d2fd406d6bdbb45d146cd3f6b1349db28ee9fd"
+dependencies = [
+ "bitflags",
+ "core-foundation 0.9.1",
+ "core-graphics-types 0.1.1",
  "foreign-types",
  "libc",
 ]
@@ -393,6 +419,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "core-graphics-types"
+version = "0.1.1"
+source = "git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd#f8d2fd406d6bdbb45d146cd3f6b1349db28ee9fd"
+dependencies = [
+ "bitflags",
+ "core-foundation 0.9.1",
+ "foreign-types",
+ "libc",
+]
+
+[[package]]
 name = "core-text"
 version = "19.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -400,6 +437,17 @@ checksum = "04dfae50af11e72657fe7174cddb1ecddc5398037f7f6f39533ad69207c9a4e2"
 dependencies = [
  "core-foundation 0.9.0",
  "core-graphics 0.22.0",
+ "foreign-types",
+ "libc",
+]
+
+[[package]]
+name = "core-text"
+version = "19.2.0"
+source = "git+https://github.com/gkd-rusters/core-foundation-rs.git?branch=gkd#f8d2fd406d6bdbb45d146cd3f6b1349db28ee9fd"
+dependencies = [
+ "core-foundation 0.9.1",
+ "core-graphics 0.22.2",
  "foreign-types",
  "libc",
 ]
@@ -609,7 +657,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c49d6b4c11dca1a1dd931a34a9f397e2da91abe3de4110505f3530a80e560b52"
 dependencies = [
  "core-foundation 0.9.0",
- "core-text",
+ "core-text 19.0.0",
  "libc",
  "servo-fontconfig",
  "winapi 0.3.8",
@@ -1998,9 +2046,9 @@ dependencies = [
  "build-parallel",
  "byteorder",
  "cfg-if 0.1.10",
- "core-foundation 0.9.0",
- "core-graphics 0.22.0",
- "core-text",
+ "core-foundation 0.9.1",
+ "core-graphics 0.22.2",
+ "core-text 19.2.0",
  "cstr",
  "derive_more",
  "dwrote",
@@ -2059,8 +2107,8 @@ dependencies = [
  "app_units",
  "bitflags",
  "byteorder",
- "core-foundation 0.9.0",
- "core-graphics 0.22.0",
+ "core-foundation 0.9.1",
+ "core-graphics 0.22.2",
  "crossbeam-channel",
  "derive_more",
  "euclid",
@@ -2173,8 +2221,8 @@ dependencies = [
  "base64",
  "chrono",
  "clap",
- "core-foundation 0.9.0",
- "core-graphics 0.22.0",
+ "core-foundation 0.9.1",
+ "core-graphics 0.22.2",
  "crossbeam",
  "dwrote",
  "env_logger",

@@ -29,5 +29,5 @@ peek-poke = { version = "0.2", path = "../peek-poke", features = ["extras"] }
 crossbeam-channel = "0.5"
 
 [target.'cfg(target_os = "macos")'.dependencies]
-core-foundation = "0.9"
-core-graphics = "0.22"
+core-foundation = {git = "https://github.com/gkd-rusters/core-foundation-rs.git", branch = "gkd", package = "core-foundation"}
+core-graphics = {git = "https://github.com/gkd-rusters/core-foundation-rs.git", branch = "gkd", package = "core-graphics"}

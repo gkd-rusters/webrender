@@ -548,6 +548,15 @@ impl ResourceCacheError {
     }
 }
 
+impl std::fmt::Display for ResourceCacheError {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter) -> Result<(), std::fmt::Error> {
+        write!(formatter, "{:?}", self)?;
+        Ok(())
+    }
+}
+
+impl std::error::Error for ResourceCacheError {}
+
 /// Primitive metadata we pass around in a bunch of places
 #[derive(Copy, Clone, Debug)]
 pub struct LayoutPrimitiveInfo {

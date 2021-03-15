@@ -115,10 +115,10 @@ impl SpaceAndClipInfo {
     }
 }
 
+/// The "real content" display items
 #[repr(u8)]
 #[derive(Clone, Copy, Debug, Deserialize, PartialEq, Serialize, PeekPoke)]
 pub enum DisplayItem {
-    // These are the "real content" display items
     Rectangle(RectangleDisplayItem),
     ClearRectangle(ClearRectangleDisplayItem),
     HitTest(HitTestDisplayItem),
@@ -378,6 +378,7 @@ pub enum LineStyle {
     Wavy,
 }
 
+/// A text item, which can conatins a lot of glyphs
 #[derive(Clone, Copy, Debug, Default, Deserialize, PartialEq, Serialize, PeekPoke)]
 pub struct TextDisplayItem {
     pub common: CommonItemProperties,
@@ -389,8 +390,10 @@ pub struct TextDisplayItem {
     // FIXME: these are currently sometimes ignored to keep some old wrench tests
     // working, but we should really just fix the tests!
     pub bounds: LayoutRect,
+    /// The instance_key of the font used in this item
     pub font_key: font::FontInstanceKey,
     pub color: ColorF,
+    /// The options for the font instance
     pub glyph_options: Option<font::GlyphOptions>,
 } // IMPLICIT: glyphs: Vec<font::GlyphInstance>
 
